@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js" integrity="sha512-5BqtYqlWfJemW5+v+TZUs22uigI8tXeVah5S/1Z6qBLVO7gakAOtkOzUtgq6dsIo5c0NJdmGPs0H9I+2OHUHVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/style.c61ab535.css">
+    <title>Exercise Time</title>
+  </head>
+  <body>
+    <div class="container-fluid px-0">
+      <header>
+        <div class="nav">
+          <div class="left">
+            <div class="logo">
+              <img src="/logo2.cf598e60.png" alt="">
+            </div>
+  
+            <div class="menu">
+              <a href="/home.html">หน้าหลัก</a>
+              <a href="/exerTime.html">ออกกำลังกาย</a>
+              <a href="/follow.html">ติดตามอาการ</a>
+              <!-- <a href="./total.html">สรุปผล</a> -->
+            </div>
+          </div>
+  
+          <div class="username">
+            <p id="user_name"></p>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div class="container-fluid">
+      <div class="row justify-content-center my-5">
+        <div class="col-6">
+          <div class="box-noti text-center">
+            <h3>ช่วงเวลาการออกกำลังกาย</h3>
+
+            <h5>คำแนะนำ : ควรเลือกช่วงเวลาอย่างน้อย 2 ช่วงขึ้นไป</h5>
+            <div class="row my-4 justify-content-center">
+              <div class="col-6">
+                <label for="date_one" class="form-label text-center w-100">เลือกวัน และเวลาในการออกกำลังกาย</label>
+                <input type="datetime-local" id="date_one" class="form-control">
+              </div>
+             
+            </div>
+
+            <h4>ช่วงที่ 1</h4>
+
+            <div class="warnForwordF my-4">
+              <label for="alarm_one" class="form-label">แจ้งเตือนล่วงหน้า</label>
+              <select class="form-select" aria-label="Default select example" id="alarm_one">
+                <option value="5 นาที">5 นาที</option>
+                <option value="10 นาที">10 นาที</option>
+                <option value="15 นาที">15 นาที</option>
+                <option value="20 นาที">20 นาที</option>
+                <option value="25 นาที">25 นาที</option>
+                <option value="30 นาที">30 นาที</option>
+              </select>
+            </div>
+            <p>*ระยะเวลาในการออกกำลังกายขึ้นอยู่กับระดับอาการของคุณ</p>
+            <div class="box-btn-alarm d-flex justify-content-evenly">
+              <button id="save">บันทึก</button>
+              <a href="/index.html"><button class="startEx">เริ่มออกกำลังกาย</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="container-fluid footer mt-5 position-absolute bottom-0">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-6">
+          <img src="/logo2NT.3d9f9726.png" alt="">
+        </div>
+        <div class="col-6 text-end ps-3">
+          <p class="mb-0">2022 SNP .All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var username = document.getElementById("user_name");
+var get_user = localStorage.getItem("username");
+$(document).ready(function () {
+  username.append(get_user);
+  $("#user_name").click(function () {
+    localStorage.removeItem("username");
+    window.location.replace("./login.html");
+  });
+});
+var saveButton = document.getElementById('save');
+var dateTimeInput = document.getElementById('date_one');
+var alarmInput = document.getElementById('alarm_one');
+dateTimeInput.addEventListener("input", function (event) {
+  var selectedDate = new Date(event.target.value);
+  var year = selectedDate.getFullYear();
+  var month = ("0" + (selectedDate.getMonth() + 1)).slice(-2);
+  var date = ("0" + selectedDate.getDate()).slice(-2);
+  var dateString = year + "-" + month + "-" + date;
+  console.log("Date1: " + dateString);
+});
+saveButton.addEventListener('click', function () {
+  var dateTimeValue = dateTimeInput.value;
+  var _dateTimeValue$split = dateTimeValue.split('T'),
+    _dateTimeValue$split2 = _slicedToArray(_dateTimeValue$split, 2),
+    dateValue = _dateTimeValue$split2[0],
+    timeValue = _dateTimeValue$split2[1];
+  var alarmValue = alarmInput.value;
+  var timeNoti = parseInt(alarmValue.replace(" นาที", ""));
+  var data = {
+    "username": get_user,
+    "date": dateValue,
+    // Use dateValue instead of dateTimeValue
+    "time": timeValue,
+    "alarm": timeNoti
+  };
+  console.log(data);
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:428/test/line-notification.php",
+    data: data,
+    success: function success(response) {
+      console.log(response);
+      if (response == "success") {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'ส่งการแจ้งเตือนสำเร็จแล้ว',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setTimeout(function () {
+          window.location.href = './index.html';
+        }, 1500);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'ขออภัย...',
+          text: 'ไม่สามารถส่งการแจ้งเตือนได้'
+        });
+      }
+    }
+  });
+});</script>
+</html>

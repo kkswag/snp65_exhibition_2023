@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0, user-scalable=no">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js" integrity="sha512-5BqtYqlWfJemW5+v+TZUs22uigI8tXeVah5S/1Z6qBLVO7gakAOtkOzUtgq6dsIo5c0NJdmGPs0H9I+2OHUHVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="/style.c61ab535.css">
+        <title>register</title>
+</head>
+</head><body>
+    <div class="regisPart">
+        <div class="background"></div>
+        <div class="regis">
+          <!-- <h1><i class="fa-solid fa-chevron-left"></i> <span>WELLCOME</span></h1> -->
+          <div class="row justify-content-between align-items-center">
+              <a href="/login.html"><i class="fa-solid fa-chevron-left"></i></a>
+              <a href=""><span>Register</span></a>
+          </div>
+          <div class="regisForm">
+            <div class="userPart">
+              <p>USERNAME</p>
+              <input type="text" name="username" id="un">
+            </div>
+  
+            <div class="passwordPart">
+              <p>E-MAIL</p>
+              <input type="email" name="email" id="em">
+            </div>
+  
+            <div class="passwordPart">
+              <p>PASSWORD</p>
+              <input type="password" name="password" id="pw">
+            </div>
+          </div>
+
+          <a><button class="btLogin">Submit</button></a>
+        </div>
+      </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+var username = document.getElementById("un").value;
+var email = document.getElementById("em").value;
+var password = document.getElementById("pw").value;
+$(".btLogin").click(function () {
+  var username = $("#un").val();
+  var email = $("#em").val();
+  var password = $("#pw").val();
+  console.log("Username:", $("#un").val());
+  console.log("Email:", $("#em").val());
+  console.log("Password:", $("#pw").val());
+  $.ajax({
+    method: "POST",
+    url: "http://localhost:428/test/validate.php",
+    data: {
+      username: username,
+      email: email,
+      password: password
+    },
+    success: function success(response) {
+      console.log(response);
+      if (response == "User_is_null") {
+          Swal.fire({
+            position: 'top-center',
+            icon: 'warning',
+            title: 'ไม่พบผู้ใช้งาน',
+            text: `กรุณากรอกชื่อผู้ใช้`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+      } else if (response == "Email_is_null") {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'warning',
+            title: 'ไม่พบ E-mail',
+            text: `กรุณากรอก E-mail`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+      } else if (response == "Password_is_null") {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'warning',
+            title: 'ไม่พบรหัสผ่าน',
+            text: `กรุณากรอกรหัสผ่าน`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+      } else {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'ลงทะเบียนสำเร็จ',
+            text: `กลับสู่หน้า Login`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            window.location.href = '/login.html';
+          }, 1500);
+      }
+    }
+  });
+});</script>
+</html>
